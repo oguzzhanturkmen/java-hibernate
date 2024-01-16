@@ -13,6 +13,18 @@ public class RunnerSave01 {
         student01.setName("John");
         student01.setGrade(100);
 
+        Student01 student02 = new Student01();
+        student02.setId(2);
+        student02.setName("Oguz");
+        student02.setGrade(100);
+
+        Student01 student03 = new Student01();
+        student03.setId(3);
+        student03.setName("Ali");
+        student03.setGrade(100);
+
+
+
         // Creating a Configuration object and loading the configuration file
         // If you don't specify the configuration file name, hibernate will use the default configuration file name "hibernate.cfg.xml"
         // If you don't specify the configuration file path, hibernate will use the default configuration file path "src/main/resources"
@@ -61,7 +73,9 @@ public class RunnerSave01 {
         // If the save method fails, the transaction will be rolled back
         // In this case, the transaction will be committed
         //If we didn't use hibernate and use JDBC for this action we would have to write SQL --> INSERT INTO student01 (id, name, grade) VALUES (1, 'John', 100);
-        session.save(student01);
+        //session.save(student01);
+        session.save(student02);
+        session.save(student03);
 
         // Committing the transaction
         // If the save method is successful, the transaction will be committed
