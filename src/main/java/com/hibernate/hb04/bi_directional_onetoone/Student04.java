@@ -38,7 +38,7 @@ public class Student04 {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", grade=" + grade +
-                ", diary=" + diary +
+
                 '}';
     }
 
