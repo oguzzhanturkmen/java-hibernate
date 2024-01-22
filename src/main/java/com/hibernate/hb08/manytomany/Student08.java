@@ -1,23 +1,27 @@
-package com.hibernate.hb07.bi_directional_onetomany;
+package com.hibernate.hb08.manytomany;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Student07 {
+public class Student08 {
 
     @Id
     private int id;
+
+    @Column(name="student_name", nullable = false)
     private String name;
 
     private int grade;
 
-    @OneToMany(mappedBy = "student07", orphanRemoval = true , cascade = CascadeType.REMOVE)
-    private List<Book07> books = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name="student_book",
+            joinColumns = @JoinColumn(name="student_id"),
+            inverseJoinColumns = @JoinColumn(name="book_id")
+    )
+    private List<Book08> books = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -43,17 +47,17 @@ public class Student07 {
         this.grade = grade;
     }
 
-    public List<Book07> getBooks() {
+    public List<Book08> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Book07> books) {
+    public void setBooks(List<Book08> books) {
         this.books = books;
     }
 
     @Override
     public String toString() {
-        return "Student07{" +
+        return "Student08{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", grade=" + grade +
